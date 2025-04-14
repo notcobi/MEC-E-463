@@ -1,88 +1,213 @@
 \begin{multicols*}{2}
 
     \section{Heat Exchangers}
-    
+
     \subsection{General Procedure for Finned-Tube Heat Exchanger Design}
     \begin{enumerate}
         \item \textbf{Define design goals and assumptions:}
-        \begin{itemize}
-            \item Specify target heat transfer rate (e.g., 96,000 Btu/hr), air inlet/outlet temperatures, and water conditions.
-            \item Choose a reasonable air velocity over the coil. Common practice:
-            \begin{itemize}
-                \item $V_{\text{air}} = 400\text{-}500~\text{fpm}$ to reduce noise and align with filter performance.
-                \item 500 fpm is suitable for residential heating coils. Generally same max air velocity as air duct design (see section 2).
-            \end{itemize}
-            \item Choose a water velocity in tubes:
-            \begin{itemize}
-                \item $V_{\text{water}} \approx 4~\text{fps}$ is typical for potable or building service water.
-                \item Below copper erosion limits and compatible with pump suction velocity constraints.
-            \end{itemize}
-            \item Use typical material choices:
-            \begin{itemize}
-                \item Tube material: \textbf{Type K copper} (high conductivity, standard availability).
-                \item Fin material: \textbf{Copper} for improved heat transfer.
-            \end{itemize}
-            \item Select standard tube geometry:
-            \begin{itemize}
-                \item Outer diameter: $D_o = 0.402~\text{in}$ (approx. 3/8 in. nominal).
-                \item Inner diameter: $D_i = 0.305~\text{in}$ (based on Type K 1/4 in NPS, Table A.6).
-                \item Tube pitch: $x_L = 0.866~\text{in}$ (longitudinal), $x_t = 1.0~\text{in}$ (transverse) [Figure C.4a].
-            \end{itemize}
-            \item Use a \textbf{counterflow} configuration:
-            \begin{itemize}
-                \item Higher effectiveness compared to parallel flow.
-                \item Staggered tube arrangement increases turbulence and enhances heat transfer.
-            \end{itemize}
-        \end{itemize}
-    
+              \begin{itemize}
+                  \item Specify target heat transfer rate (e.g., 96,000 Btu/hr), air inlet/outlet temperatures, and water conditions.
+                  \item Choose a reasonable air velocity over the coil. Common practice:
+                        \begin{itemize}
+                            \item $V_{\text{air}} = 400\text{-}500~\text{fpm}$ to reduce noise and align with filter performance.
+                            \item 500 fpm is suitable for residential heating coils. Generally same max air velocity as air duct design (see \underline{Section 2}).
+                        \end{itemize}
+                  \item Choose a water velocity in tubes:
+                        \begin{itemize}
+                            \item $V_{\text{water}} \approx 4~\text{fps}$ is typical for potable or building service water.
+                            \item Below copper erosion limits and compatible with pump suction velocity constraints.
+                        \end{itemize}
+                  \item Use typical material choices:
+                        \begin{itemize}
+                            \item Tube material: \textbf{Type K copper} (high conductivity, standard availability).
+                            \item Fin material: \textbf{Copper} for improved heat transfer.
+                        \end{itemize}
+                  \item Select standard tube geometry:
+                        \begin{itemize}
+                            \item Outer diameter: $D_o = 0.402~\text{in}$ (approx. 3/8 in. nominal), same as \underline{\textbf{Table C.4a}}.
+                            \item Inner diameter: $D_i = 0.305~\text{in}$ (based on Type K 1/4 in NPS, Table A.6).
+                            \item Tube pitch: $x_L = 0.866~\text{in}$ (longitudinal), $x_t = 1.0~\text{in}$ (transverse) [Figure C.4a].
+                        \end{itemize}
+                  \item Use a \textbf{counterflow} configuration:
+                        \begin{itemize}
+                            \item Higher effectiveness compared to parallel flow.
+                            \item Staggered tube arrangement increases turbulence and enhances heat transfer.
+                        \end{itemize}
+              \end{itemize}
+
+        \item \textbf{Properties of Fluid} \\
+              Go to \underline{\textbf{Table A-15E}} for air and \underline{\textbf{Table A-9E}} for water properties. Note down the following:
+              \begin{itemize}
+                  \item Water properties: $T_w$, $T_{w,in}$, $T_{w,out}$, $c_{p,w}$, $\rho_w$, $\mu_w$, $k$, Pr
+                  \item Air properties: $T_a$, $T_{a,in}$, $T_{a,out}$, $c_{p,a}$, $\rho_a$, $\mu_a$, $k$, Pr
+              \end{itemize}
+        \item \textbf{Calculate Reynolds Number:}
+              \[
+                  \text{Re}_D = \frac{\rho_w V_w D_i}{\mu_w} \quad \text{(water side)}
+              \]
+        \item \textbf{Determine Convective Heat Transfer Coefficients:}
+              \begin{itemize}
+                  \item Calculate $\overline{h}_i$ using the Dittus–Boelter equation (for water inside smooth tubes):
+                        \begin{align*}
+                            \text{Nu}      & = 0.023 \cdot \text{Re}^{0.8} \cdot \text{Pr}^{0.3}                                                                    \\
+                            \overline{h}_i & = \frac{\text{Nu} \cdot k}{D} \quad \left[ \frac{\text{Btu}}{\text{hr} \cdot \text{ft}^2 \cdot ^\circ\text{F}} \right]
+                        \end{align*}
+                        \textbf{Valid if:}
+                        \begin{itemize}
+                            \item Flow is fully developed and turbulent
+                            \item Tubes are smooth
+                            \item $\text{Re} > 10{,}000$
+                            \item $0.7 < \text{Pr} < 160$
+                            \item $L/D_{\text{inner}} > 60$
+                        \end{itemize}
+                  \item Calculate $\overline{h}_o$ from $j$-factor charts (air side).
+                        \begin{enumerate}
+                            \item Pull up \underline{\textbf{Figure C.4a}}. Note down, $D_h$, $\sigma$, thin thickness.
+                            \item Calculate $G_m$:
+                                  \[
+                                      G_m = \frac{\rho_\text{air} V_\text{air}}{\sigma} \quad [\text{lb/s-ft}^2]
+                                  \]
+                            \item Calculate Re$_{G_{m}}$ using $D_h$ from chart:
+                                  \[
+                                      \text{Re}_{G_m} = \frac{G_m D_h}{\mu_\text{air}} \quad [\text{dimensionless}]
+                                  \]
+                            \item Find j-factor from \underline{\textbf{Figure C.4a}}.
+                            \item Calculate $h_o$:
+                                  \[
+                                      \overline{h}_o = \frac{j \cdot G_m c_{p, \text{air}}}{\text{Pr}^{2/3}} \quad [\text{Btu/hr-ft}^2\text{-F}]
+                                  \]
+                        \end{enumerate}
+
+              \end{itemize}
+        \item \textbf{Fouling Resistance} \\
+              Can be found in \underline{\textbf{Table C.3}}
+        \item \textbf{Fin Efficiency}
+              \begin{enumerate}[label=\roman*.]
+                  \item Fin surface effectiveness:
+                        \[
+                            \eta_{\text{so}} = 1 - \frac{A_\text{fin}}{A} \left(1 - \eta_\text{o}\right)
+                        \]
+                  \item Fin efficiency:
+                        \[
+                            \eta_o = \frac{\tanh(mr\phi)}{mr\phi}
+                        \]
+                  \item Find $m$. From j-factor chart find fin thickness, $t_\text{fin}$. Then calculate:
+                        \[
+                            m = \frac{(2 h_o)^{1/2}}{(k_\text{fin} t_\text{fin})^{1/2}} \quad [\text{ft}^{-1}]
+                        \]
+                  \item Find $r$ by
+                        \[
+                            r = \frac{D_\text{tube}}{2}
+                        \]
+                  \item Find $\phi$ by
+                        \[
+                            \phi = \left(\frac{R_{\text{EQ}}}{r} - 1\right)\left[1 + 0.35 \ln\left(\frac{R_{\text{EQ}}}{r}\right)\right]
+                        \]
+                  \item Find $R_{\text{EQ}} / r$ to use in $\phi$:
+                        \[
+                            R_{\text{EQ}} = 1.27 \psi (\beta - 0.3)^{1/2}
+                        \]
+                  \item Find $\psi$ from numbers from the j-factor chart:
+                        \[
+                            \psi = \frac{x_t}{D_o}
+                        \]
+                        where $x_t$ is the transverse tube pitch (1.00 in) and $D_o$ is the outer diameter of the tube.
+                  \item Find $\beta$ from the j-factor chart:
+                        \[
+                            \beta = \frac{L}{M}
+                        \]
+                  \item Find $M$ to use in $\beta$:
+                        \[
+                            M = \frac{x_t}{2}
+                        \]
+                  \item Find $L$ to use in $\beta$:
+                  \item \[
+                            L = \frac{\left[M^2 + x_L^2\right]^{1/2}}{2}
+                        \]
+                        where $x_L$ is the longitudinal tube pitch (0.866 in).
+                  \item Shove the numbers to solve for $\eta_o$ and $\eta_{\text{so}}$.
+              \end{enumerate}
+        \item \textbf{$A_i/A_o$ Ratio}
+              \[
+                  \frac{A_i}{A_o} \approx \left( \frac{A_i}{\Omega} \middle/ \frac{A_o}{\Omega} \right) \approx \frac{\pi D_i}{x_t x_L \alpha} = \frac{\pi D_i}{\alpha x_t x_L}
+              \]
+
+        \item \textbf{Calculate Overall Heat Transfer Coefficient:}
+              \begin{itemize}
+                  \item Use:
+                        \[
+                            U =  \frac{A_o}{A_i}\left(R_{fi} + \frac{1}{h_i} \right) + \frac{1}{\eta_o h_o} + R_{fo}
+                        \]
+                  \item Where:
+                        \begin{itemize}
+                            \item $R_{fo}$ = fouling resistance on the outside of the tube (ft$^2$-F/Btu) (air)
+                            \item $R_{fi}$ = fouling resistance on the inside of the tube (ft$^2$-F/Btu) (water)
+                        \end{itemize}
+              \end{itemize}
+
+
         \item \textbf{Use $\varepsilon$-NTU method to find surface area:}
-        \begin{itemize}
-            \item Determine NTU from effectiveness and capacity ratio (charts or equations).
-            \[
-            NTU = \frac{UA_o}{C_{\min}} \quad \Rightarrow \quad A_o = \frac{NTU \cdot C_{\min}}{U}
-            \]
-        \end{itemize}
-    
-        \item \textbf{Determine heat transfer coefficients:}
-        \begin{itemize}
-            \item Calculate $\overline{h}_i$ using Dittus–Boelter (for water in tubes):
-            \[
-            \text{Re}_D, \text{Pr}, \quad Nu = 0.023 \cdot \text{Re}^{0.8} \cdot \text{Pr}^{0.3}, \quad h = \frac{Nu \cdot k}{D}
-            \]
-            \item Calculate $\overline{h}_o$ from $j$-factor charts (air side).
-            \item Determine fin efficiency $\eta_o$ and surface ratio $A_i / A_o$.
-            \item Combine into overall $U$:
-            \[
-            \frac{1}{U} = \frac{1}{\eta_o h_o} + R_{fo} + \frac{A_i}{A_o} \left( R_{fi} + \frac{1}{h_i} \right)
-            \]
-        \end{itemize}
-    
-        \item \textbf{Find coil dimensions:}
-        \begin{itemize}
-            \item Use:
-            \[
-            \Omega = \frac{A_o}{\alpha}, \quad W = \frac{\Omega}{A_f}
-            \]
-            \item Number of tube rows: 
-            \[
-            N_r = \frac{W}{x_L}, \quad \text{round up}
-            \]
-            \item Number of tubes per row:
-            \[
-            N = \frac{C_{\min}}{\rho_w c_{p,w} V_w \cdot (\pi D_i^2 / 4)}
-            \]
-            \item Dimensions:
-            \[
-            H = N \cdot x_t, \quad L = \frac{A_f}{H}
-            \]
-        \end{itemize}
-    
-        \item \textbf{Compute air and water pressure losses:}
-        \begin{itemize}
-            \item Use j- and f-factor charts and formulas from textbook.
-            \item Convert to in. wg using air or water density at mean temperature.
-        \end{itemize}
+              \begin{itemize}
+                  \item Find total surface area:
+                        \[
+                            A_o = \frac{C_\text{min} \text{NTU}}{U}
+                        \]
+                  \item Find $C_\text{air}$ using
+                        \[
+                            \dot{Q} = C_\text{air} \left(T_{a, out} - T_{a, in}\right)
+                        \]
+                  \item Find $C_\text{water}$ using
+                        \[
+                            \dot{Q} = C_\text{water} \left(T_{w, out} - T_{w, in}\right)
+                        \]
+                  \item Find $C_\text{min}$ by taking the minimum of the two. If $C_\text{min} / C_\text{max}  \approx c_{p, a} / c_{p, w}$ then say the assumption of $\dot{m}_a = \dot{m}_w$ is valid.
+                  \item Find $\varepsilon$:
+                  \item \[
+                            \varepsilon = \frac{C_{\text{cold}}}{C_{\text{min}}} \frac{T_{\text{cold}, out} - T_{\text{cold}, in}}{T_{\text{hot}, in} - T_{\text{cold}, in}}
+                        \]
+                  \item Use \underline{\textbf{Figure 4.12}} to find NTU
+                  \item Use \underline{\textbf{Table 4.5}} to find $A_o$.
+              \end{itemize}
+
+
+        \item \textbf{Find Number of Rows and Tubes:}
+              \begin{itemize}
+                  \item Use:
+                        \[
+                            \Omega = \frac{A_o}{\alpha}, \quad W = \frac{\Omega}{A_f}
+                        \]
+                        Where $A_f$ is the frontal area of the heat exchanger.
+                  \item Number of tube rows:
+                        \[
+                            N_r = \frac{W}{x_L}, \quad \text{round up}
+                        \]
+                        Where $x_L$ is the longitudinal tube pitch (0.866 in). $N_r$ is the number of rows of tubes in the heat exchanger.
+                  \item Number of tubes per row:
+                        \[
+                            \dot{m}_{w} = \rho_w V_w A_\text{tube} = N_\text{tube} \cdot \frac{\pi D_i^2}{4}
+                        \]
+                        and \[
+                            C_\text{hot}= \dot{m}_{w} c_{p,w} = \frac{\dot{Q}}{\Delta T_{w}} \quad \text{(water side)}
+                        \]
+                        Rearranging gives:
+                        \[
+                            N_\text{tube} = \frac{4C_\text{hot}}{c_{p,w} \rho_w V_w \pi D_i^2}
+                        \]
+                        \underline{Note convert inches to feet and hours to seconds.}
+              \end{itemize}
+
+        \item \textbf{Size of the heat exchanger:}
+              \begin{itemize}
+                  \item Height:
+                        \[
+                            H = N_\text{tube} \cdot x_t
+                        \]
+                  \item Width:
+                        \[
+                            W = \frac{A_f}{H}
+                        \]
+              \end{itemize}
+        \item \textbf{Look at Problem set 3 for the rest of the calculations.}
     \end{enumerate}
-    
-    \end{multicols*}
-    
+
+\end{multicols*}
