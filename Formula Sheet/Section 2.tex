@@ -1,0 +1,259 @@
+\begin{multicols*}{2}
+    \setcounter{section}{1} % Start numbering at 2
+    \section{Air Duct Systems}
+    \subsection{General Procedure}
+    \begin{enumerate}
+        \item \textbf{Assumptions:}
+              \begin{itemize}
+                  \item Maximum velocity
+                        \begin{itemize}
+                            \item Non-industrial: maximum velocity = \textbf{1200 fpm}
+                            \item Industrial: maximum velocity = \textbf{2200 fpm}
+                            \item If CFM is capped, check \underline{\textbf{Table 2.3}} for maximum velocity.
+                        \end{itemize}
+                  \item If $P_\text{fan}$ unknown, target pressure drop: \textbf{0.1 inch wg per 100 ft of duct}\footnote{Most common case.}. Else, when pressure drop is known, calculate friction loss:
+                        \[\text{friction loss} = \frac{P_\text{fan} - P_\text{longest exit}}{L_{\text{eq}}} \cdot 100 \; \text{ft}\]
+                  \item Use the \textbf{equal friction method} to size and balance the system.
+                        \begin{itemize}
+                            \item Aim to have equal friction loss in all branch sections of the duct system.
+                            \item Use dampers to equalize $\Delta P$ across branches, if needed.
+                        \end{itemize}
+                  \item \textbf{Material selection:}
+                        \begin{itemize}
+                            \item \textbf{Sheet Metal}
+                                  \begin{itemize}
+                                      \item \underline{\textit{Galvanized steel}:} Typical for air duct system; Good corrosion resistance; cost-effective.
+                                      \item \textit{Aluminum}: Lightweight, corrosion-resistant; easier handling.
+                                      \item \textit{Stainless steel}: High corrosion resistance; suitable for high pressure and temperature.
+                                  \end{itemize}
+                            \item \textbf{PVC (Plastic)}
+                                  \begin{itemize}
+                                      \item \textit{ASTM D 2513}: Thermoplastic gas pressure pipe (polyethylene), for temperatures $> 428^\circ$F.
+                                      \item \textit{ASTM D 2517}: Reinforced epoxy resin pipe; very high corrosion resistance, pressures $> 8300$ psi.
+                                  \end{itemize}
+                        \end{itemize}
+                  \item \textbf{Component Selection}
+                        \begin{itemize}
+                            \item \textit{Bellmouth:} Used at entrance to reduce noise.
+                            \item \textit{Tee 90°:} Used to split flow into two ducts.
+                            \item \textit{Elbow 90°:} Used to change direction of flow.
+                            \item \textit{Diffuser:} To distribute air. Check \underline{\textbf{Table 2.2}} for pressure loss.
+                        \end{itemize}
+              \end{itemize}
+
+        \item \textbf{Pipe Sizing}
+              \begin{itemize}
+                  \item Use \underline{\textbf{Fig A.1}} To find what you don't have. You need three of cfm, friction loss, duct size, and velocity to find the last one. Usually use cfm and friction with velocity maximums to find duct size.
+                  \item Choose \textbf{even} size if reasonable because they are more commonly available.
+                  \item Write down the diameter, cfm, friction loss in a nice table.
+              \end{itemize}
+        % \item \textbf{Determine flow regime:}
+        %       \begin{itemize}
+        %           \item Calculate Reynolds number using $D_h$.
+        %           \item Identify if the flow is laminar or turbulent.
+        %           \item Select appropriate method for friction factor $f$ (Moody chart or correlation).
+        %       \end{itemize}
+
+        % \item \textbf{Calculate head losses ():}
+        %       \begin{itemize}
+        %           \item Major head loss: $h_l = f \cdot \frac{L}{D} \cdot \frac{V^2}{2}$
+        %           \item Minor head loss:
+        %                 \[
+        %                     h_{lm} = \sum K \cdot \frac{V^2}{2} \quad \text{or} \quad h_{lm} = \sum f \cdot \frac{L_{\text{equiv}}}{D} \cdot \frac{V^2}{2}
+        %                 \]
+        %                 \begin{mdframed}[leftmargin=0pt, rightmargin=0pt]
+        %                     Where $K$ is from \underline{\textbf{Table A.14}} and $L_{\text{equiv}}$ is from \underline{\textbf{Table A.4}}.
+        %                 \end{mdframed}
+        %       \end{itemize}
+
+        \item \textbf{Calculate Pressure Losses} \\
+        Check the main branch and then offshoots from the main branch to determine highest pressure loss.
+              \begin{itemize}
+                  \item Calculate pressure loss due to friction:
+                        \[
+                            \Delta P_{i-j} = (\text{friction loss})\cdot L_{\text{eq, i-j}} \quad [\text{in. wg}]
+                        \]
+                        \begin{itemize}
+                            \item $L_{\text{eq, i-j}}$ = equivalent length of duct section between points $i$ and $j$ which can be caluclated by summing length of pipe and adding equivalent lengths of components from \underline{\textbf{Table A.4}}.
+                        \end{itemize}
+                  \item Calculate pressure loss due to components by referring to \underline{\textbf{Table 2.2}}.
+                  \item Total pressure loss:
+                        \[
+                            \Delta P = \Delta P_i + \sum \Delta P_{\text{components}} \quad [\text{in. wg}]
+                        \]
+              \end{itemize}
+
+        \item \textbf{Choose a Fan:}
+              \begin{itemize}
+                  \item Select a fan that meets the required pressure drop and flow rate.
+                  \item Ensure the fan is suitable for the application (e.g., centrifugal, axial).
+              \end{itemize}
+
+              % \item \textbf{Apply system constraints:}
+              %       \begin{itemize}
+              %           \item Ensure total pressure drop ($\Delta P$) is within the system allowance (e.g., 0.1–0.18 in. wg/100 ft).
+              %           \item Maintain acceptable duct velocity (depending on application).
+              %       \end{itemize}
+
+              % \item \textbf{Check high velocity systems (if applicable):}
+              %       \begin{itemize}
+              %           \item If $V > 2500$ fpm, refer to \textbf{Table 2.3} and \textbf{Table 2.5} for maximum allowed velocities based on noise and location criteria.
+              %       \end{itemize}
+
+              % \item \textbf{Select materials and layout:}
+              %       \begin{itemize}
+              %           \item Consider duct material (e.g., galvanized steel, aluminum, PVC).
+              %           \item Use rectangular ducts with $\text{AR} < 4$ when space is constrained.
+              %       \end{itemize}
+        \item \textbf{Draw final layout and balance system:}
+              \begin{itemize}
+                  \item Label each section with flow rate, duct size, length, and pressure drop.
+                  \item Add dampers and VFDs as needed for balancing flow across branches.
+              \end{itemize}
+        \item \textbf{Conclusion}
+              \begin{itemize}
+                  \item Ensure all components are properly sized and selected.
+                  \item Verify that the system meets design criteria for flow rate, pressure drop, and noise levels.
+                  \item Discuss improvements
+              \end{itemize}
+    \end{enumerate}
+
+    \rule{\linewidth}{0.4pt}
+
+    \subsection{Reynolds Number Concepts}
+    \subsubsection{Internal Flow and Flow Regimes}
+    \begin{itemize}
+        \item \textbf{Laminar flow:} Smooth, ordered motion.
+        \item \textbf{Turbulent flow:} Disordered, fluctuating motion.
+        \item Characterized by the Reynolds number:
+              \[
+                  \text{Re} = \frac{\rho V D_h}{\mu} \quad \text{or} \quad \text{Re} = \frac{V D_h}{\nu}
+              \]
+        \item For non-circular ducts, use hydraulic diameter:
+              \begin{align*}
+                   & D_h = \frac{4A_c}{P}                                           \\
+                   & \text{(where $A_c$ is cross-sectional area, $P$ is perimeter)}
+              \end{align*}
+    \end{itemize}
+
+    \textbf{Hydraulic Diameters for Common Duct Shapes:}
+    \begin{itemize}
+        \item Square duct ($L \times L$):
+              \[
+                  D_h = \frac{4(L \cdot L)}{4L} = L
+              \]
+        \item Rectangular duct ($L \times w$):
+              \[
+                  D_h = \frac{4Lw}{2L + 2w} = \frac{2Lw}{L + w}
+              \]
+        \item Annular duct (between outer $D_2$ and inner $D_1$):
+              \[
+                  D_h = \frac{D_2^2 - D_1^2}{D_2 + D_1} = D_2 - D_1
+              \]
+    \end{itemize}
+
+    \textcolor{red}{Note: For flow rate, use actual area not $D_h$.}
+
+    \subsubsection{Flow Characterization}
+    \begin{itemize}
+        \item Use critical Reynolds number: $\text{Re}_{\text{cr}} = 2300$
+        \item $\text{Re} < \text{Re}_{\text{cr}}$: Laminar flow
+        \item $\text{Re} > \text{Re}_{\text{cr}}$: Turbulent flow
+    \end{itemize}
+
+    \subsection{Head Losses}
+
+    \subsubsection{Major and Minor Losses}
+    \begin{itemize}
+        \item Major losses ($H_l$): Caused by wall friction and viscous effects in fully developed flow through straight duct sections.
+        \item Minor losses ($H_{lm}$): Result from components such as entrances, exits, bends, fittings, valves, and sudden area changes. In air ducts, this includes filters and heating/cooling coils.
+        \item \textbf{Units:} $h_l$, $h_{lm}$ in J/kg or m$^2$/s$^2$ (energy head); $H_l$, $H_{lm}$ in m or ft (elevation head)
+        \item Total head loss:
+              \[
+                  H_{lT} = H_l + H_{lm} = \frac{h_l + h_{lm}}{g}
+              \]
+    \end{itemize}
+
+    \subsubsection{Major Head Loss Formula}
+    \[
+        h_l = f \cdot \frac{L}{D} \cdot \frac{V^2}{2} \qquad \text{or} \qquad
+        H_l = f \cdot \frac{L}{D} \cdot \frac{V^2}{2g}
+    \]
+    \begin{itemize}
+        \item For \textbf{laminar flow}:
+              \[
+                  f = \frac{64}{\text{Re}}
+              \]
+        \item For \textbf{turbulent flow}, use the Moody chart (default method):
+              \begin{enumerate}
+                  \item Calculate $\text{Re}$
+                  \item Determine relative roughness $\varepsilon/D$ (from Table A-1)
+                  \item Use $\text{Re}$ and $\varepsilon/D$ to find $f$ on the chart
+                  \item Compute head loss using $f$
+              \end{enumerate}
+        \item Alternatively, use:
+              \[
+                  \frac{1}{\sqrt{f}} = -1.8 \log_{10} \left[ \frac{6.9}{\text{Re}} + \left( \frac{\varepsilon/D}{3.7} \right)^{1.11} \right] \quad \text{(Haaland)}
+              \]
+    \end{itemize}
+
+    \subsubsection{Minor Head Loss Formula}
+    \[
+        h_{lm} = K \cdot \frac{V^2}{2} \qquad \text{or} \qquad H_{lm} = K \cdot \frac{V^2}{2g}
+    \]
+    \[
+        h_{lm} = f \cdot \frac{L_{\text{equiv}}}{D} \cdot \frac{V^2}{2}
+    \]
+    \begin{itemize}
+        \item $K$ = loss coefficient (from tables)
+        \item $L_{\text{equiv}}$ = equivalent length of fitting/device
+    \end{itemize}
+
+    \subsection{Rectangular Duct Sizing and Aspect Ratio}
+    \begin{itemize}
+        \item Use hydraulic diameter for Reynolds number and friction calculations:
+              \[
+                  D_h = \frac{2Lw}{L + w}
+              \]
+        \item Cross-sectional area:
+              \[
+                  A = L \cdot w
+              \]
+        \item \textbf{Aspect Ratio (AR)}:
+              \[
+                  \text{AR} = \frac{L}{w} \quad \text{(smaller is better)}
+              \]
+              \begin{itemize}
+                  \item Recommended: $\text{AR} < 4$
+                  \item If $\text{AR} > 4$:
+                        \begin{itemize}
+                            \item Higher frictional losses (more perimeter for same area)
+                            \item More expensive fabrication
+                        \end{itemize}
+              \end{itemize}
+        \item \textbf{Design Steps:}
+              \begin{enumerate}
+                  \item Use circular equivalent method to determine round duct size based on $Q$ and acceptable $V$ (see Fig. A.1)
+                  \item Select a rectangular duct with same area and acceptable aspect ratio (see Table A.3)
+                  \item Check space, noise, and architectural constraints
+              \end{enumerate}
+    \end{itemize}
+
+    \subsection{Variable Definitions}
+    \begin{itemize}
+        \item $\text{Re}$: Reynolds number
+        \item $D_h$: Hydraulic diameter
+        \item $A_c$: Cross-sectional area
+        \item $P$: Perimeter
+        \item $f$: Darcy friction factor
+        \item $\varepsilon$: Roughness
+        \item $V$: Average velocity
+        \item $L$: Duct length
+        \item $D$: Diameter
+        \item $g$: Gravitational acceleration
+        \item $h_l$, $h_{lm}$: Head loss (J/kg)
+        \item $H_l$, $H_{lm}$: Head loss (m)
+        \item $K$: Loss coefficient
+        \item $L_{\text{equiv}}$: Equivalent length of fitting
+    \end{itemize}
+\end{multicols*}

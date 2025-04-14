@@ -1,0 +1,130 @@
+\begin{multicols*}{2}
+    \section{Liquid Pipe System}
+    \begin{enumerate}
+        \item \textbf{Define system and assumptions:}
+              \begin{itemize}
+                  \item Identify known values (e.g., $Q$, pipe dimensions, velocity, elevation changes).
+                  \item Set fluid properties (e.g., $\rho$, $\mu$ at given temperature). \underline{\textbf{Table HEX liquid-gas on Canvas}}.
+                  \item List all fittings, joints, valves with $K$ values or equivalent lengths.
+                        \begin{itemize}
+                            \item \textbf{Flanged fittings} are popular
+                        \end{itemize}
+                        \item \textbf{Schedule 40 steel} is popular (low carbon steel).
+                  \item Typical velocities can be found in \underline{\textbf{Table A.12}}.
+                        \begin{itemize}
+                            \item \textbf{Cold water supply piping}: 4-8 ft/s
+                            \item \textbf{Pump suction line}: $\leq$ 5 ft/s
+                        \end{itemize}
+                  \item Check erroosion limits in \underline{\textbf{Table A.13}}.
+                  \item Target pressure drop in pipting: \textbf{$\leq$ 3 ft wg/100 ft}
+                  \item \underline{Recommended to convert gpm to ft$^3$/s for calculations.} 1 gpm = 1/448.8 ft$^3$/s
+              \end{itemize}
+        \item \textbf{Sizing}
+              \begin{itemize}
+                  \item If pipe diameter is not given, check \underline{\textbf{Fig. A.3}} or \underline{\textbf{Fig. A.4}}, depending on material.
+                        \begin{itemize}
+                            \item \textbf{Open system} if the system is open to the atmosphere.
+                            \item \textbf{Closed system} if the system is closed to the atmosphere.
+                        \end{itemize}
+              \end{itemize}
+
+        \item \textbf{Apply the energy equation:}
+              \begin{align*}
+                  H_{\text{pump}} = \frac{w_{\text{pump}}}{g} = H_{lT} & + \left[ \frac{P_2}{\rho g} + \alpha_2 \frac{V_{\text{ave},2}^2}{2g} + z_2 \right] \\
+                                                                       & - \left[ \frac{P_1}{\rho g} + \alpha_1 \frac{V_{\text{ave},1}^2}{2g} + z_1 \right]
+              \end{align*}
+              $\alpha = 2$ for laminar flow, $\alpha = 1.06 \approx 1$ for turbulent flow
+        \item If \textcircled{1} and \textcircled{2} are:
+              \begin{itemize}
+                  \item Both upstream or both downstream of the pump: $H_{\text{pump}} = 0$
+                  \item On opposite sides of the pump: $H_{\text{pump}} \neq 0$
+              \end{itemize}
+              \item \textbf{Compute head losses:}
+              \begin{itemize}
+                  \item \textbf{Major loss:}
+                  \[
+                      H_{\text{major}} = f \cdot \frac{L}{D} \cdot \frac{V^2}{2g}
+                  \]
+                  \begin{itemize}
+                      \item Find $f$ using the Moody chart with $\varepsilon/D$ (see \underline{\textbf{Table A.1}}), or use the Swamee–Jain equation:
+                      \[
+                          f = 0.25 \left[ \log_{10} \left( \frac{\varepsilon/D}{3.7} + \frac{5.74}{\text{Re}^{0.9}} \right) \right]^{-2}
+                      \]
+                      \item Other friction factor formulas are listed in \underline{\textbf{Table A.2}}.
+                      \item \textbf{If Using Sizing Chart:}
+                      \[
+                          H_{l} = \frac{\text{(loss per 100 ft)}}{100} \cdot L_{\text{pipe}} \quad \text{[ft]}
+                      \]
+                      \begin{itemize}
+                          \item Used when referencing \underline{\textbf{Table A.3}} or \underline{\textbf{Table A.4}} for direct friction loss values.
+                      \end{itemize}
+                  \end{itemize}
+              
+                  \item \textbf{Minor loss:}
+                  \[
+                      H_{\text{minor}} = \sum K \cdot \frac{V^2}{2g}
+                  \]
+                  \begin{itemize}
+                      \item Use $K$ values from \underline{\textbf{Table A.14}}.
+                      \item Entrance losses: $K_{\text{inlet}} = 0.78$ (from notes); sometimes $K_{\text{inlet}} = 0.5$ and $K_{\text{outlet}} = 1$ may be used.
+                  \end{itemize}
+              
+              
+                  \item \textbf{Total head loss:}
+                  \[
+                      H_{lT} = H_{\text{major}} + H_{\text{minor}}
+                  \]
+              \end{itemize}
+              
+        \item \textbf{Determine flow parameters:}
+              \begin{itemize}
+                  \item Compute $V_{\text{ave}}$:
+                        \[
+                            V_{\text{ave}} = \frac{Q}{A} = \frac{4Q}{\pi D^2}
+                        \]
+                  \item Compute Reynolds number:
+                        \[
+                            \text{Re} = \frac{4 \rho Q}{\pi \mu D} = \frac{V_\text{ave} \rho D}{\mu}
+                        \]
+                  \item Estimate friction factor $f$:
+                        \begin{itemize}
+                            \item Use Moody chart if $\varepsilon/D$ is known.
+                            \item Or apply Haaland equation:
+                                  \[
+                                      \frac{1}{\sqrt{f}} = -1.8 \log_{10} \left[ \frac{6.9}{\text{Re}} + \left( \frac{\varepsilon/D}{3.7} \right)^{1.11} \right]
+                                  \]
+                        \end{itemize}
+              \end{itemize}
+
+       
+
+        \item \textbf{Compute pump power:}
+              \[
+                  \text{bhp} = \frac{\rho g Q H_{\text{pump}}}{\eta_{\text{pump}}}
+                  \quad \Rightarrow \quad \text{Convert to hp as needed}
+              \]
+              or efficiency:
+              \[
+                  \eta_{\text{pump}} = \frac{\rho Q g H}{\omega T_{\text{shaft}}} = \frac{W_{\text{water horsepower}}}{\text{bhp}} = \frac{\rho Q g H}{\text{bhp}} = \frac{mgH}{\text{bhp}}
+              \]
+
+
+        \item \textbf{Cavitation Check (NPSH):}
+              \begin{itemize}
+                  \item Use energy equation to find pressure at pump inlet:
+                        \[
+                            \frac{P_1}{\rho g} + \alpha_1 \frac{V_{\text{ave},1}^2}{2g} + z_1 = \frac{P_2}{\rho g} + \alpha_2 \frac{V_{\text{ave},2}^2}{2g} + z_2 + H_{lT, \text{suction}}
+                        \]
+                        Find $H_{lT, \text{suction}}$ using the same method as above.
+                  \item Compute:
+                        \[
+                            \text{NPSHA} = \left(\frac{P}{\rho g} + \frac{V_\text{avg}^2}{2g} \right)_{\text{pump inlet}} - \frac{P_{\text{vapor}}}{\rho g}
+                        \]
+                        vapor pressure can be found in \underline{\textbf{Table A-9E}}.
+                  \item Compare with NPSHR to ensure:
+                        \[
+                            \text{NPSHA} > \text{NPSHR}
+                        \]
+              \end{itemize}
+    \end{enumerate}
+\end{multicols*}

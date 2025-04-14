@@ -1,0 +1,88 @@
+\begin{multicols*}{2}
+
+    \section{Heat Exchangers}
+    
+    \subsection{General Procedure for Finned-Tube Heat Exchanger Design}
+    \begin{enumerate}
+        \item \textbf{Define design goals and assumptions:}
+        \begin{itemize}
+            \item Specify target heat transfer rate (e.g., 96,000 Btu/hr), air inlet/outlet temperatures, and water conditions.
+            \item Choose a reasonable air velocity over the coil. Common practice:
+            \begin{itemize}
+                \item $V_{\text{air}} = 400\text{-}500~\text{fpm}$ to reduce noise and align with filter performance.
+                \item 500 fpm is suitable for residential heating coils. Generally same max air velocity as air duct design (see section 2).
+            \end{itemize}
+            \item Choose a water velocity in tubes:
+            \begin{itemize}
+                \item $V_{\text{water}} \approx 4~\text{fps}$ is typical for potable or building service water.
+                \item Below copper erosion limits and compatible with pump suction velocity constraints.
+            \end{itemize}
+            \item Use typical material choices:
+            \begin{itemize}
+                \item Tube material: \textbf{Type K copper} (high conductivity, standard availability).
+                \item Fin material: \textbf{Copper} for improved heat transfer.
+            \end{itemize}
+            \item Select standard tube geometry:
+            \begin{itemize}
+                \item Outer diameter: $D_o = 0.402~\text{in}$ (approx. 3/8 in. nominal).
+                \item Inner diameter: $D_i = 0.305~\text{in}$ (based on Type K 1/4 in NPS, Table A.6).
+                \item Tube pitch: $x_L = 0.866~\text{in}$ (longitudinal), $x_t = 1.0~\text{in}$ (transverse) [Figure C.4a].
+            \end{itemize}
+            \item Use a \textbf{counterflow} configuration:
+            \begin{itemize}
+                \item Higher effectiveness compared to parallel flow.
+                \item Staggered tube arrangement increases turbulence and enhances heat transfer.
+            \end{itemize}
+        \end{itemize}
+    
+        \item \textbf{Use $\varepsilon$-NTU method to find surface area:}
+        \begin{itemize}
+            \item Determine NTU from effectiveness and capacity ratio (charts or equations).
+            \[
+            NTU = \frac{UA_o}{C_{\min}} \quad \Rightarrow \quad A_o = \frac{NTU \cdot C_{\min}}{U}
+            \]
+        \end{itemize}
+    
+        \item \textbf{Determine heat transfer coefficients:}
+        \begin{itemize}
+            \item Calculate $\overline{h}_i$ using Dittus–Boelter (for water in tubes):
+            \[
+            \text{Re}_D, \text{Pr}, \quad Nu = 0.023 \cdot \text{Re}^{0.8} \cdot \text{Pr}^{0.3}, \quad h = \frac{Nu \cdot k}{D}
+            \]
+            \item Calculate $\overline{h}_o$ from $j$-factor charts (air side).
+            \item Determine fin efficiency $\eta_o$ and surface ratio $A_i / A_o$.
+            \item Combine into overall $U$:
+            \[
+            \frac{1}{U} = \frac{1}{\eta_o h_o} + R_{fo} + \frac{A_i}{A_o} \left( R_{fi} + \frac{1}{h_i} \right)
+            \]
+        \end{itemize}
+    
+        \item \textbf{Find coil dimensions:}
+        \begin{itemize}
+            \item Use:
+            \[
+            \Omega = \frac{A_o}{\alpha}, \quad W = \frac{\Omega}{A_f}
+            \]
+            \item Number of tube rows: 
+            \[
+            N_r = \frac{W}{x_L}, \quad \text{round up}
+            \]
+            \item Number of tubes per row:
+            \[
+            N = \frac{C_{\min}}{\rho_w c_{p,w} V_w \cdot (\pi D_i^2 / 4)}
+            \]
+            \item Dimensions:
+            \[
+            H = N \cdot x_t, \quad L = \frac{A_f}{H}
+            \]
+        \end{itemize}
+    
+        \item \textbf{Compute air and water pressure losses:}
+        \begin{itemize}
+            \item Use j- and f-factor charts and formulas from textbook.
+            \item Convert to in. wg using air or water density at mean temperature.
+        \end{itemize}
+    \end{enumerate}
+    
+    \end{multicols*}
+    
